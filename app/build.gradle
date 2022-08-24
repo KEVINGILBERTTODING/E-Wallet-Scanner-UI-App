@@ -49,4 +49,6 @@ dependencies {
 
     // dependencies for lottie
     implementation 'com.airbnb.android:lottie:5.2.0'
+    // dependencies for circle imageview
+    implementation 'com.mikhaellopez:circularimageview:4.3.1'
 }
