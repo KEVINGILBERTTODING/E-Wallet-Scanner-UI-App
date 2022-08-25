@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/drawable/container_edittext_transaction.xml" value="0.195" />
+        <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/drawable/container_notes.xml" value="0.195" />
+        <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/drawable/container_rupiah.xml" value="0.195" />
+        <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/drawable/container_status.xml" value="0.195" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/drawable/rounded_menu.xml" value="0.1325" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/drawable/shape_poduct.xml" value="0.1515" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout-land/fragment_detail_product.xml" value="0.12" />
@@ -11,6 +15,8 @@
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/fragment_home_frgmaent.xml" value="0.19145299145299147" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/fragment_home_frgment.xml" value="0.264" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/fragment_scanner.xml" value="0.19649122807017544" />
+        <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/fragment_transaction.xml" value="0.23333333333333334" />
+        <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/layout.xml" value="0.1850877192982456" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/list_payment.xml" value="0.536" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/list_transaction.xml" value="0.264" />
       </map>

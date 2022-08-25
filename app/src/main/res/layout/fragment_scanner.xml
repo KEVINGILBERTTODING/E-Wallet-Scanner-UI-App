@@ -27,7 +27,7 @@
         android:layout_gravity="center"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/scan_bar2"    />
+        app:lottie_rawRes="@raw/scan_bar2" />
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/app_bar"

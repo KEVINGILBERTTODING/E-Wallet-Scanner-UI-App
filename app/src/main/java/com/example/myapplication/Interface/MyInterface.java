@@ -23,9 +23,14 @@ public interface MyInterface {
 
     // get all product
 
-   @GET("get_transaction.php")
+    @GET("get_transaction.php")
     Call<List<MyModel>> getTransaction(
             @Query("user_id") Integer user_id
+    );
+
+    @GET("get_scanner_product.php")
+    Call<List<MyModel>> findProductId(
+            @Query("product_id") String productId
     );
 
 }
