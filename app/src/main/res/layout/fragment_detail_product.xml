@@ -17,8 +17,6 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="wrap_content">
-
-
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/app_bar"
                 android:layout_width="match_parent"
@@ -32,17 +30,18 @@
                         android:layout_width="@dimen/_15sdp"
                         android:layout_height="@dimen/_15sdp"
                         android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
                         android:background="@drawable/ic_back" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
                         android:fontFamily="@font/popmed"
+                        android:layout_centerInParent="true"
                         android:text="Show QR Code"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/_11ssp" />
+                        android:textSize="@dimen/_10ssp" />
 
                 </RelativeLayout>
 
@@ -144,15 +143,15 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_scan"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Scan QR Code"
                 android:backgroundTint="@color/blue"
                 app:cornerRadius="@dimen/_10sdp"
                 android:elevation="@dimen/_20sdp"
                 app:elevation="@dimen/_20sdp"
-                android:textSize="@dimen/_11ssp"
-                android:fontFamily="@font/popsem"
+                android:textSize="@dimen/_10ssp"
+                android:fontFamily="@font/popmed"
                 android:textAllCaps="false"
                 android:layout_marginTop="@dimen/_20sdp"/>
 

@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.example.myapplication.Model.MyModel;
 import com.example.myapplication.R;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
@@ -35,12 +36,14 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     @Override
     public void onBindViewHolder(@NonNull TransactionAdapter.ViewHolder holder, int position) {
 
+        DecimalFormat decimalFormat = new DecimalFormat("#,###");
+
             holder.tv_product_name.setText(myModelList.get(position).getProduct_name());
             Glide.with(context)
                     .load(myModelList.get(position).getImage())
                     .into(holder.iv_product);
             holder.tv_date.setText(myModelList.get(position).getDate());
-            holder.tv_total.setText("-" + " " + "Rp." + " " + myModelList.get(position).getTotal());
+            holder.tv_total.setText("- Rp.  " + decimalFormat.format(myModelList.get(position).getTotal()));
 
     }
 

@@ -40,8 +40,6 @@ public class HomeFragment extends Fragment {
     LinearLayoutManager linearLayoutManager;
     TransactionAdapter transactionAdapter;
     DecimalFormat decimalFormat;
-    Integer number = 1000000;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

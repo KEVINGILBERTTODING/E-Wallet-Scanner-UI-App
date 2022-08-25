@@ -77,7 +77,7 @@ public class DetailProduct extends Fragment {
         });
 
         // set content
-        tv_product_name.setText(productName);
+        tv_product_name.setText(packageName);
         Glide.with(getContext())
                 .load(imageProduct)
                 .override(300, 300)

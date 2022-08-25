@@ -19,7 +19,7 @@ public class MyModel implements Serializable {
     @SerializedName("date")
     String date;
     @SerializedName("total")
-    String total;
+    Integer total;
     @SerializedName("product_id")
     String product_id;
     @SerializedName("name")
@@ -36,9 +36,11 @@ public class MyModel implements Serializable {
     String message;
 
     public MyModel (String user_id, String username, String photo_profile,
-                    String transaction_id, String date, String total, String product_id,
+                    String transaction_id, String date, Integer total, String product_id,
                     String product_name, String package_name, String image, Integer balance,
                     String status, String message) {
+
+
         this.user_id = user_id;
         this.username = username;
         this.photo_profile = photo_profile;
@@ -97,11 +99,11 @@ public class MyModel implements Serializable {
         this.date = date;
     }
 
-    public String getTotal() {
+    public Integer getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(Integer total) {
         this.total = total;
     }
 

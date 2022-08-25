@@ -27,7 +27,7 @@
         android:layout_gravity="center"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/scanner_anim" />
+        app:lottie_rawRes="@raw/scan_bar2"    />
 
     <com.google.android.material.appbar.CollapsingToolbarLayout
         android:id="@+id/app_bar"
@@ -37,11 +37,13 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageButton
                 android:id="@+id/btn_back"
                 android:layout_width="@dimen/_15sdp"
                 android:layout_height="@dimen/_15sdp"
                 android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
                 android:background="@drawable/ic_back" />
 
             <TextView
@@ -52,7 +54,7 @@
                 android:fontFamily="@font/popmed"
                 android:text="Scan and Play"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_11ssp" />
+                android:textSize="@dimen/_10ssp" />
         </RelativeLayout>
     </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -83,15 +85,13 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/popmed"
-            android:text="Please point your camera on the QR code"
+            android:textAlignment="center"
+            android:text="Please point your camera on the\nQR code"
             android:textColor="#616161"
-            android:textSize="@dimen/_9ssp" />
+            android:layout_marginTop="@dimen/_8sdp"
+            android:textSize="@dimen/_8ssp" />
 
     </LinearLayout>
-
-
-
-
 
 
 </RelativeLayout>
