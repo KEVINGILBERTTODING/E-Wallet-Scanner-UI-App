@@ -29,7 +29,7 @@ public class MyModel implements Serializable {
     @SerializedName("image")
     String image;
     @SerializedName("balance")
-    String balance;
+    Integer balance;
     @SerializedName("status")
     String status;
     @SerializedName("message")
@@ -37,7 +37,7 @@ public class MyModel implements Serializable {
 
     public MyModel (String user_id, String username, String photo_profile,
                     String transaction_id, String date, String total, String product_id,
-                    String product_name, String package_name, String image, String balance,
+                    String product_name, String package_name, String image, Integer balance,
                     String status, String message) {
         this.user_id = user_id;
         this.username = username;
@@ -137,11 +137,11 @@ public class MyModel implements Serializable {
         this.image = image;
     }
 
-    public String getBalance() {
+    public Integer getBalance() {
         return balance;
     }
 
-    public void setBalance(String balance) {
+    public void setBalance(Integer balance) {
         this.balance = balance;
     }
 

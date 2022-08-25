@@ -24,6 +24,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.Util.DataApi;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import retrofit2.Call;
@@ -38,6 +39,8 @@ public class HomeFragment extends Fragment {
     RecyclerView rv_product, rv_transaction;
     LinearLayoutManager linearLayoutManager;
     TransactionAdapter transactionAdapter;
+    DecimalFormat decimalFormat;
+    Integer number = 1000000;
 
 
     @Override
@@ -51,6 +54,10 @@ public class HomeFragment extends Fragment {
         tv_balance = view.findViewById(R.id.tv_balance);
         rv_product = view.findViewById(R.id.recycler_payment);
         rv_transaction = view.findViewById(R.id.rv_transaction);
+
+        // create new b=object decimal format
+        decimalFormat = new DecimalFormat("#,###");
+
 
 
 
@@ -79,7 +86,12 @@ public class HomeFragment extends Fragment {
                             .skipMemoryCache(true)
                             .into(iv_profile);
 
-                    tv_balance.setText("Rp." + " " + myModelList.get(0).getBalance());
+
+                    // set balance wwith decimal format
+                    tv_balance.setText("Rp. " + decimalFormat.format(myModelList.get(0).getBalance()));
+//                    tv_balance.setText(number.toString());
+//
+
                 } else {
                     Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
                     Log.d("Error", response.message());
