@@ -5,6 +5,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.example.myapplication.Fragment.HomeFragment;
 
@@ -15,9 +18,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         // get to HomeFragment
         getHomeFragment();
     }
+
 
     private void getHomeFragment() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

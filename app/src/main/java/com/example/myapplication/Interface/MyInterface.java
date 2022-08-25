@@ -15,4 +15,17 @@ public interface MyInterface {
     Call<List<MyModel>> getCardInfo(
             @Query("user_id") Integer user_id
     );
+
+    // get all product
+
+    @GET("get_product.php")
+    Call<List<MyModel>> getProduct();
+
+    // get all product
+
+   @GET("get_transaction.php")
+    Call<List<MyModel>> getTransaction(
+            @Query("user_id") Integer user_id
+    );
+
 }

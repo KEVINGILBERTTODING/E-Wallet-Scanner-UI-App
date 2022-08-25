@@ -1,9 +1,13 @@
 package com.example.myapplication.Fragment;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -50,10 +54,20 @@ public class ScannerFragment extends Fragment {
             }
         });
 
+        cameraPermission();
+
 
 
         return view;
     }
+
+    private void cameraPermission() {
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_DENIED)
+
+            ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CAMERA}, 1);
+    }
+
 
     @Override
     public void onResume() {
@@ -66,4 +80,6 @@ public class ScannerFragment extends Fragment {
         mCodeScanner.startPreview();
         super.onPause();
     }
+
+
 }

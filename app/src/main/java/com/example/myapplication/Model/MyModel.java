@@ -1,6 +1,8 @@
 package com.example.myapplication.Model;
 
 
+import com.example.myapplication.Util.DataApi;
+import com.example.myapplication.Util.ServerApi;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -28,10 +30,15 @@ public class MyModel implements Serializable {
     String image;
     @SerializedName("balance")
     String balance;
+    @SerializedName("status")
+    String status;
+    @SerializedName("message")
+    String message;
 
     public MyModel (String user_id, String username, String photo_profile,
-                          String transaction_id, String date, String total, String product_id,
-                          String product_name, String package_name, String image, String balance) {
+                    String transaction_id, String date, String total, String product_id,
+                    String product_name, String package_name, String image, String balance,
+                    String status, String message) {
         this.user_id = user_id;
         this.username = username;
         this.photo_profile = photo_profile;
@@ -43,6 +50,9 @@ public class MyModel implements Serializable {
         this.package_name = package_name;
         this.image = image;
         this.balance = balance;
+        this.status = status;
+        this.message = message;
+
 
 
     }
@@ -64,7 +74,7 @@ public class MyModel implements Serializable {
     }
 
     public String getPhoto_profile() {
-        return photo_profile;
+        return ServerApi.BASE_URL + "img_profile/" + photo_profile;
     }
 
     public void setPhoto_profile(String photo_profile) {
@@ -120,7 +130,7 @@ public class MyModel implements Serializable {
     }
 
     public String getImage() {
-        return image;
+        return DataApi.Base_Url + "img_product/" + image;
     }
 
     public void setImage(String image) {
@@ -133,5 +143,21 @@ public class MyModel implements Serializable {
 
     public void setBalance(String balance) {
         this.balance = balance;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
