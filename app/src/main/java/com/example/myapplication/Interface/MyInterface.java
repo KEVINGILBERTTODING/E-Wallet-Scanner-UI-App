@@ -32,14 +32,32 @@ public interface MyInterface {
             @Query("user_id") Integer user_id
     );
 
+    // scanner
     @GET("get_scanner_product.php")
     Call<List<MyModel>> findProductId(
             @Query("product_id") String productId
     );
 
+    // check balance
     @FormUrlEncoded
     @POST("check_balance.php")
     Call<MyModel> checkBalance (
+            @Field("user_id") String user_id,
+            @Field("total") BigDecimal total
+    );
+
+    // post transaction
+    @FormUrlEncoded
+    @POST("insert_transaction.php")
+    Call<MyModel> postTransaction (
+            @Field("user_id") Integer user_id,
+            @Field("product_id") String product_id,
+            @Field("total") BigDecimal total
+    );
+
+    @FormUrlEncoded
+    @POST("transaction.php")
+    Call<MyModel> transaction(
             @Field("user_id") String user_id,
             @Field("total") BigDecimal total
     );

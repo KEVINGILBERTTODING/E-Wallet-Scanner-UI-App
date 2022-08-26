@@ -6,9 +6,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +32,8 @@ import com.google.android.material.snackbar.Snackbar;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.Date;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -44,6 +48,10 @@ public class TransactionFragment extends Fragment {
     DecimalFormat decimalFormat;
     Button btnConfirm;
     String user_id = "1";
+    Integer userId = 1;
+    BigDecimal value;
+    TextView tv_username, tv_productName, tv_productid, tv_total;
+    String currentDateTimeString;
 
     String productName, packageName, productId, imageProduct;
 
@@ -97,12 +105,15 @@ public class TransactionFragment extends Fragment {
         btnConfirm.setOnClickListener(view1 -> {
 
 
-            BigDecimal value = MoneyTextWatcher.parseCurrencyValue(edt_value.getText().toString());
+            value = MoneyTextWatcher.parseCurrencyValue(edt_value.getText().toString());
 
             checkBalance(user_id, value);
 
         });
 
+        // get current date and time
+
+        currentDateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
 
 
 
@@ -124,10 +135,37 @@ public class TransactionFragment extends Fragment {
 //                    Toast.makeText(getContext(), myModel.getMessage(), Toast.LENGTH_SHORT).show();
 
                     if (myModel.getStatus().equals("1")) {
+
                         Dialog dialog = new Dialog(getContext());
                         dialog.setContentView(R.layout.layout_confirmation);
+
+                        tv_productName = dialog.findViewById(R.id.tv_product_name);
+                        tv_productid = dialog.findViewById(R.id.tv_product_id);
+                        tv_username = dialog.findViewById(R.id.tv_username);
+                        tv_total = dialog.findViewById(R.id.tv_total);
+
+                        Button btnSend = dialog.findViewById(R.id.btn_send);
+
+                        btnSend.setOnClickListener(view -> {
+                            postTransaction(userId, productId, value) ;
+
+
+                            dialog.dismiss();
+                        });
+
+                        // set content
+                        tv_productName.setText(productName);
+                        tv_productid.setText(productId);
+                        tv_total.setText(edt_value.getText().toString());
+                        getUserInfo();
+
+
+
+
                         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                         dialog.show();
+
+
                     }
                     else {
                         Dialog dialog = new Dialog(getContext());
@@ -146,7 +184,102 @@ public class TransactionFragment extends Fragment {
 
             @Override
             public void onFailure(Call<MyModel> call, Throwable t) {
-                Snackbar.make(getView(), "Cek koneksi", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(getView(), "No connection", Snackbar.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    // get user info
+    private void getUserInfo(){
+        MyInterface myInterface = DataApi.getClient().create(MyInterface.class);
+        myInterface.getCardInfo(userId).enqueue(new Callback<List<MyModel>>() {
+            @Override
+            public void onResponse(Call<List<MyModel>> call, Response<List<MyModel>> response) {
+
+                if (response.isSuccessful()){
+                    List<MyModel> myModelList = response.body();
+                    tv_username.setText(myModelList.get(0).getUsername());
+
+                } else {
+                    Toast.makeText(getContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                    Log.e("TAG", "onResponse: " + response.message());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<MyModel>> call, Throwable t) {
+                Snackbar.make(getView(), "No connection", Snackbar.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    // method for post transaction
+    private void postTransaction(Integer userId, String productId, BigDecimal total){
+        MyInterface myInterface = DataApi.getClient().create(MyInterface.class);
+        myInterface.postTransaction(userId,productId, total ).enqueue(new Callback<MyModel>() {
+            @Override
+            public void onResponse(Call<MyModel> call, Response<MyModel> response) {
+                if (response.isSuccessful()){
+                    MyModel myModel = response.body();
+
+                    if (myModel.getStatus().equals("1")) {
+
+                        // call method transaction
+                        transcation();
+
+                    }
+                    else {
+                        Toast.makeText(getContext(), "failed", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<MyModel> call, Throwable t) {
+                Snackbar.make(getView(), "No connection", Snackbar.LENGTH_SHORT).show();
+                Log.e("MyApp", "onFailure: " + t.getMessage());
+
+            }
+        });
+    }
+
+    // Menurangi balance dengan jumlah total pembayaran
+    private void transcation() {
+        MyInterface myInterface = DataApi.getClient().create(MyInterface.class);
+        myInterface.transaction(user_id, value).enqueue(new Callback<MyModel>() {
+            @Override
+            public void onResponse(Call<MyModel> call, Response<MyModel> response) {
+                if (response.isSuccessful()){
+                    MyModel myModel = response.body();
+                    if (myModel.getStatus().equals("1")){
+
+                        Fragment fragment = new Fragment_receipt();
+                        Bundle bundle = new Bundle();
+                        bundle.putString("date", currentDateTimeString);
+                        bundle.putString("total", String.valueOf(value));
+                        fragment.setArguments(bundle);
+
+
+                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                        fragmentTransaction.replace(R.id.frame_container, fragment);
+                        fragmentTransaction.commit();
+
+                    }
+                    else {
+                        Toast.makeText(getContext(), "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<MyModel> call, Throwable t) {
+                Snackbar.make(getView(), "No connection", Snackbar.LENGTH_SHORT).show();
 
             }
         });
