@@ -155,6 +155,28 @@
                 android:textAllCaps="false"
                 android:layout_marginTop="@dimen/_20sdp"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OR"
+                android:fontFamily="@font/popmed"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_5sdp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pay now"
+                android:backgroundTint="@color/blue"
+                app:cornerRadius="@dimen/_10sdp"
+                android:elevation="@dimen/_20sdp"
+                app:elevation="@dimen/_20sdp"
+                android:textSize="@dimen/_10ssp"
+                android:fontFamily="@font/popmed"
+                android:textAllCaps="false"/>
+
         </LinearLayout>
 
 

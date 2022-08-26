@@ -29,7 +29,7 @@ public class DetailProduct extends Fragment {
     ImageView iv_product, iv_qrcode;
     String imageProduct, productName, productId, packageName;
     ImageButton btnBack;
-    Button  btnScan;
+    Button  btnScan, btnPayment;
 
     QRGEncoder qrgEncoder;
     Bitmap bitmap;
@@ -46,6 +46,7 @@ public class DetailProduct extends Fragment {
         btnBack = view.findViewById(R.id.btn_back);
         iv_qrcode = view.findViewById(R.id.iv_qrcde);
         btnScan = view.findViewById(R.id.btn_scan);
+        btnPayment = view.findViewById(R.id.btn_pay);
 
         // get data from adapter
         productName = getArguments().getString("product_name");
@@ -68,6 +69,22 @@ public class DetailProduct extends Fragment {
             FragmentManager fr = getFragmentManager();
             fr.popBackStack();
             });
+
+        btnPayment.setOnClickListener(view1 -> {
+
+
+            Fragment fragment = new TransactionFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("product_name", productName);
+            bundle.putString("image", imageProduct);
+            bundle.putString("product_id", productId);
+            bundle.putString("package_name", packageName);
+            fragment.setArguments(bundle);
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frame_container, fragment);
+            fragmentTransaction.commit();
+            fragmentTransaction.addToBackStack(null);
+        });
 
         btnScan.setOnClickListener(view1 -> {
             FragmentTransaction fr = getFragmentManager().beginTransaction();

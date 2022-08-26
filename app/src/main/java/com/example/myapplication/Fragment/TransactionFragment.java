@@ -71,14 +71,13 @@ public class TransactionFragment extends Fragment {
         btnBack = view.findViewById(R.id.btn_back);
         btnConfirm = view.findViewById(R.id.btn_confirm);
 
-        productName = getArguments().getString("product_name");
-        packageName = getArguments().getString("package_name");
-        productId = getArguments().getString("product_id");
-        imageProduct = getArguments().getString("image_product");
+        if (getArguments() != null) {
+            productName = getArguments().getString("product_name");
+            packageName = getArguments().getString("package_name");
+            productId = getArguments().getString("product_id");
+            imageProduct = getArguments().getString("image");
+        }
 
-        tv_package_name.setText(packageName);
-        tv_product_name.setText(productName);
-        tv_product_id.setText(productId);
 
 
 
