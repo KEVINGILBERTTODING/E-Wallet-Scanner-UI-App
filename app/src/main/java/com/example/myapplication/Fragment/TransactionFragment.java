@@ -219,7 +219,7 @@ public class TransactionFragment extends Fragment {
     // method for post transaction
     private void postTransaction(Integer userId, String productId, BigDecimal total){
         MyInterface myInterface = DataApi.getClient().create(MyInterface.class);
-        myInterface.postTransaction(userId,productId, total ).enqueue(new Callback<MyModel>() {
+        myInterface.postTransaction(userId,productId, total, currentDateTimeString ).enqueue(new Callback<MyModel>() {
             @Override
             public void onResponse(Call<MyModel> call, Response<MyModel> response) {
                 if (response.isSuccessful()){
@@ -261,7 +261,10 @@ public class TransactionFragment extends Fragment {
                         Fragment fragment = new Fragment_receipt();
                         Bundle bundle = new Bundle();
                         bundle.putString("date", currentDateTimeString);
-                        bundle.putString("total", String.valueOf(value));
+                        bundle.putInt("total", value.intValue());
+                        bundle.putString("username", tv_username.getText().toString());
+                        bundle.putString("product_name", productName);
+                        bundle.putString("product_id", productId);
                         fragment.setArguments(bundle);
 
 

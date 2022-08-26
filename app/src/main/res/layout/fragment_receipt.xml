@@ -184,7 +184,7 @@
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_20sdp">
+                            android:layout_marginTop="@dimen/_10sdp">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -219,7 +219,7 @@
                                 android:fontFamily="@font/popmed"
                                 android:text="Product name"
                                 android:textColor="@color/background"
-                                android:textSize="@dimen/_9ssp" />
+                                android:textSize="@dimen/_8ssp" />
 
                             <TextView
                                 android:id="@+id/tv_product_id"
@@ -232,7 +232,7 @@
                                 android:gravity="end"
                                 android:text="Product_id"
                                 android:textColor="@color/background"
-                                android:textSize="@dimen/_9ssp" />
+                                android:textSize="@dimen/_8ssp" />
 
 
                         </RelativeLayout>
@@ -267,6 +267,7 @@
                     </LinearLayout>
 
                     <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_home"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
@@ -274,11 +275,11 @@
                         android:layout_marginTop="@dimen/_20sdp"
                         android:layout_marginEnd="@dimen/_20sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
-                        android:text="Go Back To Home"
                         android:fontFamily="@font/popmed"
+                        android:text="Go Back To Home"
+                        android:textAllCaps="false"
                         android:textSize="@dimen/_10sdp"
                         app:backgroundTint="@color/blue"
-                         android:textAllCaps="false"
                         app:cornerRadius="@dimen/_10sdp" />
 
 
@@ -312,10 +313,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        app:lottie_autoPlay="true"
         android:layout_marginTop="@dimen/_5sdp"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/congrats3" />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/congrats2" />
 
 
 

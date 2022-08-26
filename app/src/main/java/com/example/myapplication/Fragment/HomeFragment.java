@@ -25,6 +25,7 @@ import com.example.myapplication.Util.DataApi;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,13 +34,14 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
-    TextView tv_username, tv_username2, tv_username3, tv_balance;
+    TextView tv_username, tv_username2, tv_username3, tv_balance, tv_greeting;
     ImageView iv_profile;
     ProductAdapter productAdapter;
     RecyclerView rv_product, rv_transaction;
     LinearLayoutManager linearLayoutManager;
     TransactionAdapter transactionAdapter;
     DecimalFormat decimalFormat;
+    Calendar calendar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,11 +54,28 @@ public class HomeFragment extends Fragment {
         tv_balance = view.findViewById(R.id.tv_balance);
         rv_product = view.findViewById(R.id.recycler_payment);
         rv_transaction = view.findViewById(R.id.rv_transaction);
+        tv_greeting = view.findViewById(R.id.tv_greeting);
 
         // create new b=object decimal format
         decimalFormat = new DecimalFormat("#,###");
 
 
+        // set greeting
+        calendar = Calendar.getInstance();
+        int time_of_day = calendar.get(Calendar.HOUR_OF_DAY);
+        if (time_of_day >= 0 && time_of_day < 12) {
+            tv_greeting.setText("Good morning 👋");
+
+        } else if (time_of_day >= 12 && time_of_day < 15) {
+            tv_greeting.setText("Good afternoon 👋");
+
+        } else if (time_of_day >= 15 && time_of_day < 18) {
+            tv_greeting.setText("Good evening 👋");
+
+        } else if (time_of_day >= 18 && time_of_day < 24) {
+            tv_greeting.setText("Good night 👋");
+
+        }
 
 
         getInfoCard();
@@ -87,8 +106,6 @@ public class HomeFragment extends Fragment {
 
                     // set balance wwith decimal format
                     tv_balance.setText("Rp. " + decimalFormat.format(myModelList.get(0).getBalance()));
-//                    tv_balance.setText(number.toString());
-//
 
                 } else {
                     Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();

@@ -52,7 +52,8 @@ public interface MyInterface {
     Call<MyModel> postTransaction (
             @Field("user_id") Integer user_id,
             @Field("product_id") String product_id,
-            @Field("total") BigDecimal total
+            @Field("total") BigDecimal total,
+            @Field("date") String date
     );
 
     @FormUrlEncoded
@@ -60,6 +61,7 @@ public interface MyInterface {
     Call<MyModel> transaction(
             @Field("user_id") String user_id,
             @Field("total") BigDecimal total
+
     );
 
 }
