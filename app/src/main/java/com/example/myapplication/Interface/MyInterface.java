@@ -2,10 +2,14 @@ package com.example.myapplication.Interface;
 
 import com.example.myapplication.Model.MyModel;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface MyInterface {
@@ -31,6 +35,13 @@ public interface MyInterface {
     @GET("get_scanner_product.php")
     Call<List<MyModel>> findProductId(
             @Query("product_id") String productId
+    );
+
+    @FormUrlEncoded
+    @POST("check_balance.php")
+    Call<MyModel> checkBalance (
+            @Field("user_id") String user_id,
+            @Field("total") BigDecimal total
     );
 
 }

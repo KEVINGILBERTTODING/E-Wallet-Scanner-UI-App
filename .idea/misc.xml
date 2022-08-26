@@ -15,8 +15,10 @@
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/fragment_home_frgmaent.xml" value="0.19145299145299147" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/fragment_home_frgment.xml" value="0.264" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/fragment_scanner.xml" value="0.19649122807017544" />
-        <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/fragment_transaction.xml" value="0.23333333333333334" />
+        <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/fragment_transaction.xml" value="0.176" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/layout.xml" value="0.1850877192982456" />
+        <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/layout_confirmation.xml" value="0.23333333333333334" />
+        <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/layout_sad.xml" value="0.2" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/list_payment.xml" value="0.536" />
         <entry key="..\:/Users/lenovo/Desktop/e-wallet/app/src/main/res/layout/list_transaction.xml" value="0.264" />
       </map>

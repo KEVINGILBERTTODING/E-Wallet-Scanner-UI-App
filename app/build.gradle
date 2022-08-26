@@ -1,3 +1,5 @@
+import java.text.DecimalFormat
+
 plugins {
     id 'com.android.application'
 }
@@ -54,4 +56,7 @@ dependencies {
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
     // Dependencies for qrcode generator
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
+
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
