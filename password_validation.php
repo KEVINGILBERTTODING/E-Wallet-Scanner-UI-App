@@ -8,13 +8,13 @@ class user
 
 
 $password =  $_POST['password'];
-$username = $_POST['username'];
+$user_id = $_POST['user_id'];
 
 
 
 
 
-$query = "select password from user where username = '$username'";
+$query = "select password from user where user_id = '$user_id'";
 
 
 $result = mysqli_query($koneksi, $query);
