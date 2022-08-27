@@ -64,4 +64,12 @@ public interface MyInterface {
 
     );
 
+    // validation password
+    @FormUrlEncoded
+    @POST("password_validation.php")
+    Call<MyModel> checkPassword(
+            @Field("user_id") Integer user_id,
+            @Field("password") String password
+    );
+
 }

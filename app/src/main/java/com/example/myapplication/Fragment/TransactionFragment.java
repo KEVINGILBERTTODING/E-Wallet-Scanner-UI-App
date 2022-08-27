@@ -71,12 +71,16 @@ public class TransactionFragment extends Fragment {
         btnBack = view.findViewById(R.id.btn_back);
         btnConfirm = view.findViewById(R.id.btn_confirm);
 
-        if (getArguments() != null) {
-            productName = getArguments().getString("product_name");
-            packageName = getArguments().getString("package_name");
-            productId = getArguments().getString("product_id");
-            imageProduct = getArguments().getString("image");
-        }
+
+        productName = getArguments().getString("product_name");
+        packageName = getArguments().getString("package_name");
+        productId = getArguments().getString("product_id");
+        imageProduct = getArguments().getString("image");
+
+        tv_package_name.setText(packageName);
+        tv_product_name.setText(productName);
+        tv_product_id.setText(productId);
+
 
 
 
@@ -97,8 +101,8 @@ public class TransactionFragment extends Fragment {
         decimalFormat = new DecimalFormat("#,###");
 
 
-       edt_value.addTextChangedListener(new MoneyTextWatcher(edt_value));
-       edt_value.setText("0");
+        edt_value.addTextChangedListener(new MoneyTextWatcher(edt_value));
+        edt_value.setText("0");
 
 
         btnConfirm.setOnClickListener(view1 -> {
@@ -131,7 +135,6 @@ public class TransactionFragment extends Fragment {
             public void onResponse(Call<MyModel> call, Response<MyModel> response) {
                 MyModel myModel = response.body();
                 if (response.isSuccessful()){
-//                    Toast.makeText(getContext(), myModel.getMessage(), Toast.LENGTH_SHORT).show();
 
                     if (myModel.getStatus().equals("1")) {
 
@@ -257,7 +260,7 @@ public class TransactionFragment extends Fragment {
                     MyModel myModel = response.body();
                     if (myModel.getStatus().equals("1")){
 
-                        Fragment fragment = new Fragment_receipt();
+                        Fragment fragment = new ConfirmationFragment();
                         Bundle bundle = new Bundle();
                         bundle.putString("date", currentDateTimeString);
                         bundle.putInt("total", value.intValue());
@@ -286,6 +289,8 @@ public class TransactionFragment extends Fragment {
             }
         });
     }
+
+
 
 
 }
