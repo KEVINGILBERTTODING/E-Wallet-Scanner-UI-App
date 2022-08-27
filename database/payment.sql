@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2022 at 05:09 PM
+-- Generation Time: Aug 27, 2022 at 09:41 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -74,7 +74,17 @@ INSERT INTO `transaction` (`transaction_id`, `user_id`, `total`, `product_id`, `
 (49, 1, 50555, 'ID7992023', '26 Agt 2022 20:58:57'),
 (50, 1, 50000, 'ID7992023', '26 Agt 2022 21:00:19'),
 (51, 1, 50000, 'ID7992023', '26 Agt 2022 21:02:32'),
-(52, 1, 203000, 'ID7992023', 'Aug 26, 2022 9:39:23 PM');
+(52, 1, 203000, 'ID7992023', 'Aug 26, 2022 9:39:23 PM'),
+(53, 1, 20000, 'ID8902221', '27 Agt 2022 15:11:51'),
+(54, 1, 100000, 'ID8902221', '27 Agt 2022 15:12:47'),
+(55, 1, 20000, 'IDNF902211', '27 Agt 2022 15:20:29'),
+(56, 1, 2000, 'ID8902221', '27 Agt 2022 15:21:10'),
+(57, 1, 0, 'ID7992023', 'Aug 27, 2022 2:29:45 PM'),
+(58, 1, 50000, 'ID7992023', 'Aug 27, 2022 2:30:02 PM'),
+(59, 1, 20222, 'ID7992023', 'Aug 27, 2022 2:30:59 PM'),
+(60, 1, 2030, 'ID7992023', 'Aug 27, 2022 2:31:54 PM'),
+(61, 1, 1022, 'ID8902221', 'Aug 27, 2022 2:36:45 PM'),
+(62, 1, 4055, 'ID8902221', 'Aug 27, 2022 2:39:18 PM');
 
 -- --------------------------------------------------------
 
@@ -85,6 +95,7 @@ INSERT INTO `transaction` (`transaction_id`, `user_id`, `total`, `product_id`, `
 CREATE TABLE `user` (
   `user_id` int(6) NOT NULL,
   `username` varchar(80) NOT NULL,
+  `password` varchar(300) NOT NULL,
   `balance` int(50) NOT NULL,
   `photo_profile` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -93,9 +104,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `balance`, `photo_profile`) VALUES
-(1, 'Kevin Gilbert Toding', 1601999, '1.png'),
-(3, 'Kevin Gilbert', 290000, '2.png');
+INSERT INTO `user` (`user_id`, `username`, `password`, `balance`, `photo_profile`) VALUES
+(1, 'Kevin Gilbert Toding', '$2y$10$y7H2W9Lm/gx3WWrUrpoDTOy6l9D.ZUw7S/Fk9.Q9YtK1I6y2fDaZS', 1382670, '1.png'),
+(4, 'Nella', '$2y$10$w1E0/e8SwLETgBeUGvy7Le1xR5yJIU50SQFbLVp9Zaq0P0ieJU3WG', 3000000, 'nella.png'),
+(5, 'eve', '$2y$10$gZu8v./AeNmWvLxWy/ZGveurS0WUgTkDqmu2P0t1W71nsUTjxVikq', 3000000, 'eve.png');
 
 --
 -- Indexes for dumped tables
@@ -127,13 +139,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `transaction_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `transaction_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

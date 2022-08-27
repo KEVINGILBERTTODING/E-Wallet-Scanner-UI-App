@@ -28,12 +28,12 @@ if ($line = mysqli_fetch_assoc($result)) {
 
     if (password_verify($password, $password_hash)) {
         $response = new user();
-        $response->success = 1;
+        $response->status = 1;
         $response->message = "Login success.";
         die(json_encode($response));
     } else {
         $response = new user();
-        $response->success = 0;
+        $response->status = 0;
         $response->message = "Login failed.";
         die(json_encode($response));
     }
